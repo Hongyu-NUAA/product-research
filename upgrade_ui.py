@@ -13,7 +13,9 @@ with open(path, 'r', encoding='utf-8') as f:
 # ====================================================================
 old_css_end = '</style>'
 
-new_css = '''<style>
+# Close the old style block FIRST, then open a new one (not nested!)
+new_css = '''</style>
+<style>
 /* ===== Theme Variables ===== */
 :root {
   --bg-body: #f0f2f5;
@@ -423,7 +425,7 @@ function toggleTheme() {
   var btn = document.getElementById('themeToggle');
   if (html.getAttribute('data-theme') === 'dark') {
     html.removeAttribute('data-theme');
-    btn.textContent = '\\U0001f319';
+    btn.textContent = '\U0001f319';
     localStorage.setItem('theme', 'light');
   } else {
     html.setAttribute('data-theme', 'dark');
@@ -443,7 +445,7 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', 'dark');
     btn.textContent = '\\u2600\\ufe0f';
   } else {
-    btn.textContent = '\\U0001f319';
+    btn.textContent = '\U0001f319';
   }
 })();
 

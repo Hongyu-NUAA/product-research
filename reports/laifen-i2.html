@@ -150,6 +150,7 @@ blockquote { border-left: 4px solid #4fc3f7; background: #f0f8ff; padding: 12px 
 /* Topic tags */
 .topic-tags { margin: 12px 0; }
 .topic-tags .tag { font-size: 11px; }
+</style>
 <style>
 /* ===== Theme Variables ===== */
 :root {
@@ -386,7 +387,7 @@ blockquote { border-left: 4px solid var(--accent); background: var(--blockquote-
   .skinny-toggle { display: flex; }
   .sidebar.collapsed ~ .skinny-toggle { display: flex; }
 }
-</style></style>
+</style>
 </head>
 <body>
 <div class="blog-nav">
@@ -1286,7 +1287,7 @@ function toggleTheme() {
   var btn = document.getElementById('themeToggle');
   if (html.getAttribute('data-theme') === 'dark') {
     html.removeAttribute('data-theme');
-    btn.textContent = '\U0001f319';
+    btn.textContent = '🌙';
     localStorage.setItem('theme', 'light');
   } else {
     html.setAttribute('data-theme', 'dark');
@@ -1306,7 +1307,7 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', 'dark');
     btn.textContent = '\u2600\ufe0f';
   } else {
-    btn.textContent = '\U0001f319';
+    btn.textContent = '🌙';
   }
 })();
 
