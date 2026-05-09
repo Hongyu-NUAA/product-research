@@ -433,6 +433,10 @@ function toggleTheme() {
     localStorage.setItem('theme', 'dark');
   }
   if (typeof mermaid !== 'undefined') {
+    document.querySelectorAll('.mermaid').forEach(function(el, i) {
+      el.textContent = mermaidSources[i] || el.textContent;
+      el.removeAttribute('data-processed');
+    });
     mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
   }
 }
@@ -461,7 +465,24 @@ window.addEventListener('resize', function() {
 html = html.replace('</body>', js + '\n</body>')
 
 # ====================================================================
-# 5. Also fix the sidebar position CSS override from blog-nav
+# 5. Insert mermaid source storage before mermaid.initialize()
+# ====================================================================
+mermaid_store = '''// Store original mermaid source texts for re-rendering
+var mermaidSources = [];
+(function() {
+  document.querySelectorAll('.mermaid').forEach(function(el, i) {
+    mermaidSources[i] = el.textContent;
+  });
+})();
+
+'''
+
+if "var mermaidSources" not in html and "mermaid.initialize(" in html:
+    html = html.replace('mermaid.initialize(', mermaid_store + 'mermaid.initialize(')
+    print('  - Mermaid source storage inserted')
+
+# ====================================================================
+# 6. Also fix the sidebar position CSS override from blog-nav
 # ====================================================================
 # Remove any leftover !important overrides
 html = html.replace('''.sidebar { top: 42px !important; height: calc(100vh - 42px) !important; }''', '')

@@ -1217,6 +1217,14 @@ flowchart TB
 </div><!-- /main -->
 
 <script>
+// Store original mermaid source texts for re-rendering
+var mermaidSources = [];
+(function() {
+  document.querySelectorAll('.mermaid').forEach(function(el, i) {
+    mermaidSources[i] = el.textContent;
+  });
+})();
+
 mermaid.initialize({
   startOnLoad: true,
   theme: 'neutral',
@@ -1295,6 +1303,10 @@ function toggleTheme() {
     localStorage.setItem('theme', 'dark');
   }
   if (typeof mermaid !== 'undefined') {
+    document.querySelectorAll('.mermaid').forEach(function(el, i) {
+      el.textContent = mermaidSources[i] || el.textContent;
+      el.removeAttribute('data-processed');
+    });
     mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
   }
 }
