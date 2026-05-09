@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品调研报告：徕芬扫振式电动牙刷 i2</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.8; }
+
+/* Sidebar */
+.sidebar { position: fixed; left: 0; top: 0; width: 260px; height: 100vh; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); color: #fff; overflow-y: auto; z-index: 100; padding: 20px 0; }
+.sidebar h2 { font-size: 14px; padding: 8px 20px; color: #8899aa; text-transform: uppercase; letter-spacing: 2px; }
+.sidebar a { display: block; padding: 6px 20px; color: #c0c8d4; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 3px solid transparent; }
+.sidebar a:hover { color: #fff; background: rgba(255,255,255,0.05); border-left-color: #4fc3f7; }
+.sidebar a.sub { padding-left: 32px; font-size: 12px; color: #8899aa; }
+
+/* Main */
+.main { margin-left: 260px; padding: 0; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; padding: 60px 50px; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; right: -100px; top: -100px; width: 400px; height: 400px; border-radius: 50%; background: rgba(79,195,247,0.08); }
+.hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; }
+.hero .subtitle { font-size: 16px; color: #8899aa; }
+.hero .meta { margin-top: 20px; display: flex; gap: 30px; font-size: 13px; color: #8899aa; }
+.hero .meta span { display: flex; align-items: center; gap: 6px; }
+
+/* Content */
+.content { max-width: 1100px; padding: 40px 50px 80px; }
+
+/* Cards */
+.card { background: #fff; border-radius: 12px; padding: 30px 35px; margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid #e8ecf0; }
+.card h2 { font-size: 22px; color: #1a1a2e; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid #4fc3f7; display: flex; align-items: center; gap: 10px; }
+.card h3 { font-size: 17px; color: #0f3460; margin: 24px 0 12px; }
+.card h4 { font-size: 15px; color: #444; margin: 16px 0 8px; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+th { background: #1a1a2e; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; white-space: nowrap; }
+td { padding: 9px 14px; border-bottom: 1px solid #e8ecf0; }
+tr:nth-child(even) td { background: #f8f9fb; }
+tr:hover td { background: #eef5ff; }
+th:first-child { border-radius: 6px 0 0 0; }
+th:last-child { border-radius: 0 6px 0 0; }
+
+/* Image Grid */
+.img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.img-grid figure { margin: 0; border-radius: 8px; overflow: hidden; border: 1px solid #e8ecf0; background: #fafafa; }
+.img-grid img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.img-grid figcaption { padding: 8px 12px; font-size: 12px; color: #666; text-align: center; }
+
+/* Tags */
+.tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; margin: 2px; }
+.tag-blue { background: #e3f2fd; color: #1565c0; }
+.tag-green { background: #e8f5e9; color: #2e7d32; }
+.tag-red { background: #fce4ec; color: #c62828; }
+.tag-orange { background: #fff3e0; color: #e65100; }
+.tag-purple { background: #f3e5f5; color: #6a1b9a; }
+
+/* Quick Stats */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 16px 0; }
+.stat-card { background: #f8f9fb; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #e8ecf0; }
+.stat-card .num { font-size: 28px; font-weight: 700; color: #0f3460; line-height: 1.2; }
+.stat-card .label { font-size: 12px; color: #8899aa; margin-top: 4px; }
+.stat-card.negative .num { color: #c62828; }
+.stat-card.warning .num { color: #e65100; }
+.stat-card.positive .num { color: #2e7d32; }
+
+/* Mermaid */
+.mermaid-wrap { background: #fafbfc; border-radius: 8px; padding: 16px; margin: 16px 0; overflow-x: auto; border: 1px solid #e8ecf0; text-align: center; }
+.mermaid-wrap svg { max-width: 100%; height: auto; }
+
+/* Lists */
+.card ul, .card ol { padding-left: 20px; margin: 8px 0 16px; }
+.card li { margin-bottom: 6px; font-size: 14px; }
+.card li::marker { color: #4fc3f7; }
+
+/* Blockquote */
+blockquote { border-left: 4px solid #4fc3f7; background: #f0f8ff; padding: 12px 18px; margin: 12px 0 20px; border-radius: 0 6px 6px 0; font-size: 14px; color: #444; }
+
+/* Progress bar */
+.progress { display: flex; align-items: center; gap: 10px; margin: 4px 0; }
+.progress-bar { flex: 1; height: 20px; background: #e8ecf0; border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 10px; transition: width 0.3s; }
+.progress .label { width: 100px; font-size: 13px; text-align: right; }
+.progress .pct { width: 40px; font-size: 13px; font-weight: 600; }
+
+/* SWOT grid */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.swot-card { padding: 20px; border-radius: 10px; border: 1px solid; }
+.swot-card h4 { margin: 0 0 10px; font-size: 15px; }
+.swot-card ul { padding-left: 16px; margin: 0; }
+.swot-card li { font-size: 13px; margin-bottom: 4px; }
+.swot-s { background: #e8f5e9; border-color: #a5d6a7; }
+.swot-s h4 { color: #2e7d32; }
+.swot-w { background: #fce4ec; border-color: #ef9a9a; }
+.swot-w h4 { color: #c62828; }
+.swot-o { background: #e3f2fd; border-color: #90caf9; }
+.swot-o h4 { color: #1565c0; }
+.swot-t { background: #fff3e0; border-color: #ffcc80; }
+.swot-t h4 { color: #e65100; }
+
+/* Timeline */
+.timeline { position: relative; padding: 0; margin: 16px 0; }
+.timeline::before { content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: #e0e0e0; }
+.tl-item { padding: 4px 0 4px 40px; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: 11px; top: 12px; width: 12px; height: 12px; border-radius: 50%; background: #4fc3f7; border: 2px solid #fff; box-shadow: 0 0 0 2px #4fc3f7; }
+.tl-item .tl-time { font-size: 12px; color: #8899aa; }
+.tl-item .tl-text { font-size: 14px; }
+.tl-item.red::before { background: #ef5350; box-shadow: 0 0 0 2px #ef5350; }
+
+/* Comparison badges */
+.badge { display: inline-block; padding: 1px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+.badge-yes { background: #e8f5e9; color: #2e7d32; }
+.badge-no { background: #fce4ec; color: #c62828; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .hero { padding: 30px 20px; }
+  .content { padding: 20px; }
+  .card { padding: 20px; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .img-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 24px; }
+}
+
+/* Comparison matrix */
+.matrix-wrap { overflow-x: auto; }
+.matrix-wrap table th:first-child { min-width: 120px; }
+.rating { color: #f5a623; letter-spacing: 1px; }
+
+/* Strength bar */
+.str-bar { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
+.str-bar .name { width: 80px; font-size: 12px; text-align: right; color: #666; }
+.str-bar .track { flex: 1; height: 8px; background: #e8ecf0; border-radius: 4px; overflow: hidden; }
+.str-bar .fill { height: 100%; border-radius: 4px; }
+
+/* Scrollbar */
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: #334; border-radius: 2px; }
+
+/* Topic tags */
+.topic-tags { margin: 12px 0; }
+.topic-tags .tag { font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="blog-nav">
+  <a href="../index.html">← 返回博客首页</a>
+  <span class="sep">|</span>
+  <span class="current">产品调研报告作品集</span>
+</div>
+
+<style>
+.blog-nav { background: rgba(26,26,46,0.95); padding: 10px 24px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #334; position: sticky; top: 0; z-index: 200; }
+.blog-nav a { color: #4fc3f7; text-decoration: none; font-size: 13px; }
+.blog-nav a:hover { color: #fff; }
+.blog-nav .sep { color: #334; font-size: 12px; }
+.blog-nav .current { font-size: 12px; color: #667; }
+.sidebar { top: 42px !important; height: calc(100vh - 42px) !important; }
+</style>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="toc">
+  <h2>目录</h2>
+  <a href="#basic">一、产品基本信息</a>
+  <a href="#user" class="sub">二、目标用户画像</a>
+  <a href="#spec" class="sub">三、核心功能与技术规格</a>
+  <a href="#market" class="sub">四、市场全景数据</a>
+  <a href="#market-global" class="sub" style="padding-left:44px;font-size:11px;">4.1 全球市场</a>
+  <a href="#market-china" class="sub" style="padding-left:44px;font-size:11px;">4.2 中国市场</a>
+  <a href="#market-channel" class="sub" style="padding-left:44px;font-size:11px;">4.3 线上渠道</a>
+  <a href="#market-share" class="sub" style="padding-left:44px;font-size:11px;">4.4 品牌份额</a>
+  <a href="#market-history" class="sub" style="padding-left:44px;font-size:11px;">4.5 徕芬销售数据</a>
+  <a href="#market-compare" class="sub" style="padding-left:44px;font-size:11px;">4.6 竞品对比</a>
+  <a href="#market-background" class="sub" style="padding-left:44px;font-size:11px;">4.7 竞品公司背景</a>
+  <a href="#design" class="sub">五、设计与用户体验</a>
+  <a href="#channel" class="sub">六、渠道与营销策略</a>
+  <a href="#reputation" class="sub">七、用户口碑分析</a>
+  <a href="#supply" class="sub">八、成本与供应链</a>
+  <a href="#company" class="sub">九、公司经营与财务状况</a>
+  <a href="#swot" class="sub">十、SWOT 分析</a>
+  <a href="#summary" class="sub">十一、总结与建议</a>
+  <a href="#ref" class="sub">十二、参考资料</a>
+</nav>
+
+<!-- Main -->
+<div class="main">
+
+<!-- Hero -->
+<div class="hero">
+  <h1>产品调研报告：徕芬扫振式电动牙刷 i2</h1>
+  <div class="subtitle">扫振式技术路线的差异化突围与品牌信任危机</div>
+  <div class="meta">
+    <span>调研日期：2026-05-09</span>
+    <span>版本：v3.0</span>
+    <span>类型：AI 公开信息调研</span>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- 一、产品基本信息 -->
+<div class="card" id="basic">
+  <h2>一、产品基本信息</h2>
+  <div class="topic-tags">
+    <span class="tag tag-blue">中高端电动牙刷</span>
+    <span class="tag tag-green">扫振式</span>
+    <span class="tag tag-purple">399-499元</span>
+    <span class="tag tag-orange">2025年12月发布</span>
+  </div>
+
+  <table>
+    <tr><th style="width:120px">项目</th><th>内容</th></tr>
+    <tr><td>产品名称</td><td>徕芬扫振式电动牙刷 i2</td></tr>
+    <tr><td>品牌/厂商</td><td>徕芬（Laifen）/ 东莞市徕芬电子科技有限公司</td></tr>
+    <tr><td>发布时间</td><td>2025 年 12 月 15 日</td></tr>
+    <tr><td>产品类别</td><td>电动牙刷（扫振式）</td></tr>
+    <tr><td>官方定价</td><td>ABS 版 399 元 / 透明探索版 459 元 / 铝合金版 499 元</td></tr>
+    <tr><td>国补后价格</td><td>ABS 版 339.15 元起</td></tr>
+    <tr><td>目标市场</td><td>中国为主，逐步拓展海外</td></tr>
+    <tr><td>产品定位</td><td>中高端电动牙刷，"技术平权"路线的第二代旗舰</td></tr>
+  </table>
+
+  <blockquote>以自研伺服电机驱动 60° 大幅扫振，模拟巴氏刷牙法，实现"刷到位"的深度清洁体验。</blockquote>
+
+  <h3>产品实拍</h3>
+  <div class="img-grid">
+    <figure>
+      <img src="../images/i2_transparent_01.jpg" alt="透明探索版" onerror="this.style.display='none'">
+      <figcaption>透明探索版 — 高透 PC + AF 防指纹涂层，可见内部电机结构<br><small>来源：ChargerLab 拆解</small></figcaption>
+    </figure>
+    <figure>
+      <img src="../images/i2_transparent_02.jpg" alt="透明探索版另一角度" onerror="this.style.display='none'">
+      <figcaption>透明探索版另一角度 — 无缝压感按键<br><small>来源：ChargerLab 拆解</small></figcaption>
+    </figure>
+    <figure>
+      <img src="../images/i2_product_01.jpg" alt="产品全家福" onerror="this.style.display='none'">
+      <figcaption>产品全家福 — 手柄 + 充电底座 + 刷头<br><small>来源：ChargerLab 拆解</small></figcaption>
+    </figure>
+    <figure>
+      <img src="../images/i2_base_01.jpg" alt="磁吸无线充电底座" onerror="this.style.display='none'">
+      <figcaption>磁吸无线充电底座 — Qi 协议，15W，呼吸灯环<br><small>来源：ChargerLab 拆解</small></figcaption>
+    </figure>
+    <figure>
+      <img src="../images/i2_package_01.jpg" alt="包装盒" onerror="this.style.display='none'">
+      <figcaption>包装盒<br><small>来源：ChargerLab 拆解</small></figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- 二、目标用户画像 -->
+<div class="card" id="user">
+  <h2>二、目标用户画像</h2>
+  <table>
+    <tr><th style="width:120px">维度</th><th>描述</th></tr>
+    <tr><td>核心用户群</td><td>25-40 岁都市白领，注重口腔健康与生活品质，偏好科技感产品</td></tr>
+    <tr><td>使用场景</td><td>日常早晚刷牙（家用为主），差旅携带</td></tr>
+    <tr><td>用户痛点</td><td>传统电动牙刷清洁不彻底、巴氏刷牙法操作门槛高、牙龈易出血</td></tr>
+    <tr><td>购买动机</td><td>扫振一体自动模拟巴氏刷牙法、高颜值（苹果系设计）、可自定义参数</td></tr>
+    <tr><td>决策因素</td><td>清洁力 > 护龈体验 > 外观设计 > 价格 > 品牌口碑</td></tr>
+  </table>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+mindmap
+  root((徕芬 i2 目标用户))
+    核心人群
+      25-40 岁都市白领
+      科技产品爱好者
+      注重生活品质
+    使用场景
+      日常早晚刷牙
+      差旅携带
+      送礼场景
+    核心痛点
+      巴氏刷牙法门槛高
+      牙龈易出血
+      传统刷不干净
+    决策驱动
+      扫振一体自动刷牙
+      苹果系高颜值
+      App 自定义参数
+      两年只换不修
+    </div>
+  </div>
+</div>
+
+<!-- 三、核心功能与技术规格 -->
+<div class="card" id="spec">
+  <h2>三、核心功能与技术规格</h2>
+
+  <h3>3.1 硬件规格</h3>
+  <table>
+    <tr><th style="width:140px">模块</th><th style="width:250px">参数</th><th>备注</th></tr>
+    <tr><td>电机</td><td>自研自产 6W 伺服电机</td><td>支持 PID 动态补偿算法</td></tr>
+    <tr><td>最高振动频率</td><td>66,000 次/分钟（66kHz）</td><td>默认舒适模式 26,000 次/分</td></tr>
+    <tr><td>扫振幅度</td><td>最大 60°</td><td>模拟巴氏刷牙法</td></tr>
+    <tr><td>扭矩</td><td>440 gf·cm</td><td>—</td></tr>
+    <tr><td>电池</td><td>900mAh × 2 锂电池</td><td>双电芯设计</td></tr>
+    <tr><td>续航</td><td>约 60 天（官方）</td><td>重度使用两周余电</td></tr>
+    <tr><td>充电方式</td><td>磁吸无线充电（支持 Qi 协议）</td><td>底座可当 15W 无线充</td></tr>
+    <tr><td>防水等级</td><td>IPX8</td><td>—</td></tr>
+    <tr><td>重量</td><td>约 147-165 g</td><td>视材质版本</td></tr>
+    <tr><td>材质</td><td>ABS / 高透 PC（AF 涂层）/ 铝合金 / 不锈钢</td><td>四种材质可选</td></tr>
+  </table>
+
+  <h3>3.2 核心芯片方案</h3>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TB
+    subgraph Power["电源与充电"]
+        CPS["CPS4520<br/>无线充电接收<br/>易冲半导体"]
+        CM["CM1020-R<br/>锂电池保护<br/>创芯微"]
+    end
+    subgraph Control["主控与传感"]
+        MCU["LKS32MC084DF6Q8<br/>伺服电机主控<br/>凌鸥创芯"]
+        BT["OM6626B<br/>蓝牙连接<br/>昂瑞微"]
+        PR["CSU18M68<br/>压感/按键控制<br/>芯海科技"]
+    end
+    subgraph Output["输出与指示"]
+        LED["HTR3212S<br/>指示灯驱动<br/>禾润"]
+        MOTOR["自研 6W 伺服电机<br/>徕芬自产"]
+    end
+    subgraph Base["无线充电底座"]
+        PD["HUSB238<br/>PD 取电<br/>慧能泰"]
+        WC["HC5703C<br/>无线充电主控<br/>惠尔无线"]
+        MOS["YJQ40G10A<br/>谐振电容切换<br/>扬杰科技"]
+    end
+    Power --> Control --> Output
+    Base -.->|Qi 协议| CPS
+    </div>
+  </div>
+  <p style="font-size:13px;color:#666;">BOM 高度国产化，全部芯片来自国内供应商，成本可控。</p>
+
+  <h3>3.3 交互流程</h3>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart LR
+    subgraph 交互流程
+        A[抬起唤醒] -->|拿起即醒| B[入口启动]
+        B -->|接触牙齿| C[动力渐强 3s]
+        C --> D[正常扫振]
+        D -->|倒置 70°| E[自清洁甩干]
+    end
+    subgraph 安全保护
+        F[过压检测] -->|力度过大| G[自动停振+提醒]
+        H[飞行模式] -->|差旅防误触| I[关闭感应]
+    end
+    </div>
+  </div>
+
+  <h3>核心功能列表</h3>
+  <ol>
+    <li><strong>抬起唤醒</strong> — 拿起自动唤醒，无需按键</li>
+    <li><strong>入口启动</strong> — 刷头感应压力后才启动，不甩牙膏</li>
+    <li><strong>动力渐强</strong> — 启动后 3 秒逐渐增强，牙龈有适应时间</li>
+    <li><strong>三挡过压提醒</strong>（±30g 精度）— 用力过大自动停振</li>
+    <li><strong>双模式</strong> — 舒适模式 / 深度模式（PID 补偿开关）</li>
+    <li><strong>倒置自清洁</strong> — 倾斜 70° 自动高速空转甩干刷毛</li>
+    <li><strong>充电底座 = Qi 无线充</strong> — 可为 AirPods / iPhone 应急充电</li>
+    <li><strong>两年只换不修</strong> — 售后承诺</li>
+  </ol>
+</div>
+
+<!-- 四、市场全景数据 -->
+<div class="card" id="market">
+  <h2>四、市场全景数据</h2>
+
+  <h3 id="market-global">4.1 全球电动牙刷市场</h3>
+  <div class="stats">
+    <div class="stat-card"><div class="num">50-59亿</div><div class="label">2025 全球市场规模（美元）</div></div>
+    <div class="stat-card"><div class="num">4.4-6.7%</div><div class="label">CAGR（2025-2031）</div></div>
+    <div class="stat-card positive"><div class="num">7.9%</div><div class="label">亚太 CAGR（全球最快）</div></div>
+    <div class="stat-card"><div class="num">65-80亿</div><div class="label">2031 年全球预测（美元）</div></div>
+  </div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+xychart-beta
+    title "全球电动牙刷市场规模预测（亿美元）"
+    x-axis ["2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031"]
+    y-axis "亿美元" 0 --> 90
+    bar [45, 55, 58, 61, 64, 67, 70, 75]
+    line [45, 55, 58, 61, 64, 67, 70, 75]
+    </div>
+  </div>
+
+  <div class="mermaid-wrap" style="max-width:500px;margin:16px auto;">
+    <div class="mermaid">
+pie title 全球区域份额（2025年）
+    "北美（35-42%）" : 38
+    "欧洲（27-30%）" : 28
+    "亚太（20-25%）" : 22
+    "其他" : 12
+    </div>
+  </div>
+
+  <table>
+    <tr><th>区域</th><th>份额</th><th>CAGR</th><th>特点</th></tr>
+    <tr><td>北美</td><td>35-42%</td><td>~6.3%</td><td>渗透率最高，偏好高端智能化</td></tr>
+    <tr><td>欧洲</td><td>27-30%</td><td>~6.4%</td><td>关注环保材质、可持续设计</td></tr>
+    <tr><td><strong>亚太</strong></td><td><strong>20-25%</strong></td><td><strong>~7.9%</strong></td><td><strong>全球增长最快，中国为核心</strong></td></tr>
+    <tr><td>其他</td><td>5-10%</td><td>低-中</td><td>高收入群体驱动</td></tr>
+  </table>
+
+  <h3 id="market-china">4.2 中国电动牙刷市场</h3>
+  <div class="stats">
+    <div class="stat-card"><div class="num">~120亿</div><div class="label">2025 年总规模（元）</div></div>
+    <div class="stat-card"><div class="num">~26.8亿</div><div class="label">2025 年线上总额（元）</div></div>
+    <div class="stat-card"><div class="num">~25%</div><div class="label">渗透率（2020年仅8%）</div></div>
+    <div class="stat-card warning"><div class="num">-2.5%</div><div class="label">2025 个护大盘增速</div></div>
+  </div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+xychart-beta
+    title "中国电动牙刷市场规模趋势（亿元）"
+    x-axis ["2020", "2021", "2022", "2023", "2024", "2025", "2026E"]
+    y-axis "亿元" 0 --> 250
+    bar [50, 65, 72, 80, 94, 120, 200]
+    line [50, 65, 72, 80, 94, 120, 200]
+    </div>
+  </div>
+
+  <h3 id="market-channel">4.3 线上渠道格局（2025 年）</h3>
+  <div class="mermaid-wrap" style="max-width:500px;margin:16px auto;">
+    <div class="mermaid">
+pie title 线上渠道分布（总额 26.8 亿元）
+    "天猫（42.1%）" : 42
+    "京东（28.0%）" : 28
+    "抖音（21.6%）" : 22
+    "其他（8.3%）" : 8
+    </div>
+  </div>
+
+  <h3 id="market-share">4.4 中国市场竞争格局（品牌份额）</h3>
+  <div class="mermaid-wrap" style="max-width:500px;margin:16px auto;">
+    <div class="mermaid">
+pie title 中国电动牙刷品牌份额（2025年）
+    "usmile 26%" : 26
+    "徕芬 16%" : 16
+    "飞利浦 15%" : 15
+    "小米 ~10%" : 10
+    "欧乐B" : 8
+    "其他" : 25
+    </div>
+  </div>
+
+  <table>
+    <tr><th>梯队</th><th>品牌</th><th>份额</th><th>核心特点</th></tr>
+    <tr><td rowspan="3"><strong>第一梯队</strong><br><small>合计 57%</small></td><td><strong>usmile</strong></td><td><strong>~26%</strong></td><td>国产第一，颜值+长续航，但增长停滞</td></tr>
+    <tr><td><strong>徕芬</strong></td><td><strong>~16%</strong></td><td>扫振式开创者，技术差异化突围</td></tr>
+    <tr><td><strong>飞利浦</strong></td><td><strong>~15%</strong></td><td>国际巨头，高端市场仍强势</td></tr>
+    <tr><td rowspan="2">第二梯队</td><td>欧乐B</td><td>—</td><td>旋转式经典，专业牙医推荐</td></tr>
+    <tr><td>小米</td><td>~10%</td><td>极致性价比，米家生态联动</td></tr>
+    <tr><td>第三梯队</td><td>拜尔、力博得、素士等</td><td>—</td><td>细分市场或下沉渠道</td></tr>
+  </table>
+
+  <p><strong>国产替代趋势：</strong> 本土品牌合计占约 <strong>67%</strong> 市场份额。</p>
+
+  <h3 id="market-history">4.5 徕芬电动牙刷销售数据</h3>
+  <table>
+    <tr><th>时间</th><th>数据</th><th>说明</th></tr>
+    <tr><td>2023.10 首发</td><td>首月 13.5 万支，超 4000 万元</td><td>快速起量</td></tr>
+    <tr><td>2024 年 618</td><td>三大平台销冠</td><td>热度高峰</td></tr>
+    <tr><td>2024 年全年</td><td>份额 11%，净亏 -8000 万元</td><td>以亏损换份额</td></tr>
+    <tr><td>2025 年 618</td><td>天猫滑落至行业第五</td><td>被 usmile 等反超</td></tr>
+    <tr><td>i2 上市 3 天</td><td>销售额破千万元</td><td>抖音第 2，天猫/京东前 4</td></tr>
+    <tr><td>2025 双11（全品类）</td><td>7.1 亿元，200 万台，+30%</td><td>吹风机为绝对主力</td></tr>
+  </table>
+
+  <h4>徕芬全品类营收增长</h4>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+xychart-beta
+    title "徕芬全品类年营收（亿元）"
+    x-axis ["2021", "2022", "2023", "2024"]
+    y-axis "亿元" 0 --> 50
+    bar [1.5, 15.67, 30, 41]
+    line [1.5, 15.67, 30, 41]
+    </div>
+  </div>
+  <p style="font-size:13px;color:#666;">四年增长 27 倍，但增速放缓：2023 年 +91% → 2024 年 +37% → 2025 年 618 -40%。</p>
+
+  <h3 id="market-compare">4.6 竞品深度对比</h3>
+  <div class="matrix-wrap">
+  <table>
+    <tr><th>维度</th><th>徕芬 i2</th><th>usmile Y30</th><th>飞利浦 钻9 Pro</th><th>欧乐B iO9</th><th>小米 MES611</th></tr>
+    <tr><td><strong>价格带</strong></td><td><strong>399-499 元</strong></td><td>300-400 元</td><td>800-1200 元</td><td>1000-1500 元</td><td>100-200 元</td></tr>
+    <tr><td><strong>技术</strong></td><td>扫振式（伺服电机）</td><td>声波式</td><td>声波式</td><td>微振旋转式</td><td>声波式</td></tr>
+    <tr><td><strong>最大振频</strong></td><td>66,000 次/分</td><td>~42,000</td><td>~31,000</td><td>~48,000</td><td>~31,000</td></tr>
+    <tr><td><strong>扫振幅度</strong></td><td><strong>60°</strong></td><td>无</td><td>无</td><td>前后旋转</td><td>无</td></tr>
+    <tr><td><strong>过压提醒</strong></td><td><span class="badge badge-yes">三挡</span></td><td><span class="badge badge-yes">有</span></td><td><span class="badge badge-yes">有</span></td><td><span class="badge badge-yes">有</span></td><td><span class="badge badge-no">无</span></td></tr>
+    <tr><td><strong>无线充电</strong></td><td><span class="badge badge-yes">Qi 兼容</span></td><td><span class="badge badge-no">无</span></td><td><span class="badge badge-no">无</span></td><td><span class="badge badge-yes">有</span></td><td><span class="badge badge-no">无</span></td></tr>
+    <tr><td><strong>App 自定义</strong></td><td>三维十级</td><td>基础</td><td>基础</td><td>智能屏</td><td>米家联动</td></tr>
+    <tr><td><strong>续航</strong></td><td>~60 天</td><td>~180 天</td><td>~21 天</td><td>~14 天</td><td>~18 天</td></tr>
+    <tr><td><strong>防水</strong></td><td>IPX8</td><td>IPX7</td><td>IPX7</td><td>IPX7</td><td>IPX7</td></tr>
+    <tr><td><strong>份额</strong></td><td>16%</td><td>26%</td><td>15%</td><td>二线</td><td>~10%</td></tr>
+    <tr><td><strong>毛利率</strong></td><td><strong>< 40%</strong></td><td>~70%</td><td>~70%</td><td>~70%</td><td>中低</td></tr>
+  </table>
+  </div>
+
+  <h3 id="market-background">4.7 竞品公司背景对比</h3>
+  <table>
+    <tr><th>维度</th><th>徕芬</th><th>usmile（笑容加）</th><th>飞利浦</th></tr>
+    <tr><td>成立时间</td><td>2019 年</td><td>~2015 年</td><td>1891 年</td></tr>
+    <tr><td>年营收</td><td>~41 亿（全品类）</td><td>~30 亿（牙刷单品）</td><td>全球 181 亿欧元</td></tr>
+    <tr><td>融资/上市</td><td>B 轮（2023）</td><td>上市失败（2025）</td><td>NYSE: PHG</td></tr>
+    <tr><td>经营状况</td><td><span class="tag tag-red">牙刷亏8000万</span> <span class="tag tag-red">高管流失</span></td><td><span class="tag tag-orange">营收停滞</span> <span class="tag tag-red">资本退出</span></td><td><span class="tag tag-green">稳定</span></td></tr>
+  </table>
+
+  <h4>竞争定位矩阵</h4>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+quadrantChart
+    title 竞争定位：价格 vs 技术创新
+    x-axis 低价格 --> 高价格
+    y-axis 低技术差异化 --> 高技术差异化
+    quadrant-1 高端创新
+    quadrant-2 性价比创新
+    quadrant-3 性价比基础
+    quadrant-4 高端传统
+    "徕芬 i2": [0.48, 0.85]
+    "usmile Y30": [0.40, 0.50]
+    "飞利浦 钻9 Pro": [0.80, 0.55]
+    "欧乐B iO9": [0.85, 0.70]
+    "小米": [0.15, 0.30]
+    </div>
+  </div>
+
+  <h4>技术路线对比</h4>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart LR
+    subgraph 声波式["声波式（飞利浦/usmile/小米）"]
+        A1["单一高频震动"] --> A2["需手动调整角度"]
+        A2 --> A3["清洁效果依赖用户操作"]
+    end
+    subgraph 旋转式["旋转式（欧乐B）"]
+        B1["刷头旋转摩擦"] --> B2["清洁力最强"]
+        B2 --> B3["噪音大/磨损牙龈"]
+    end
+    subgraph 扫振式["扫振式（徕芬 i2）"]
+        C1["高频振动+60°摆动"] --> C2["自动模拟巴氏刷牙法"]
+        C2 --> C3["清洁+护龈兼顾"]
+        C2 --> C4["降低用户操作门槛"]
+    end
+    </div>
+  </div>
+</div>
+
+<!-- 五、设计与用户体验 -->
+<div class="card" id="design">
+  <h2>五、设计与用户体验</h2>
+
+  <h3>5.1 外观设计</h3>
+  <ul>
+    <li><strong>设计语言：</strong> 极简主义，"苹果设计风格"</li>
+    <li><strong>四种材质：</strong> ABS / 高透 PC（AF 涂层）/ 铝合金 / 不锈钢</li>
+    <li><strong>透明探索版：</strong> 渐变透明机身，可见内部电机结构</li>
+    <li><strong>无缝压感按键：</strong> 内凹设计，不藏污纳垢</li>
+    <li><strong>不锈钢款：</strong> 连续拉伸一体成型，镜面抛光</li>
+  </ul>
+
+  <h3>5.2 用户交互</h3>
+  <ul>
+    <li><strong>交互逻辑：</strong> 无实体按键 + 抬起唤醒 + 入口启动，零操作门槛</li>
+    <li><strong>充电体验：</strong> 磁吸无线充电，"咔哒"吸附即充</li>
+    <li><strong>底座拓展：</strong> 可当 Qi 无线充电器用（15W），出差少带一个充电器</li>
+  </ul>
+</div>
+
+<!-- 六、渠道与营销 -->
+<div class="card" id="channel">
+  <h2>六、渠道与营销策略</h2>
+
+  <table>
+    <tr><th style="width:120px">维度</th><th>详情</th></tr>
+    <tr><td>销售渠道</td><td>线上：京东/天猫/抖音/拼多多；线下：2026 年计划 300 家门店</td></tr>
+    <tr><td>核心宣发</td><td>抖音（起家渠道）、B站、小红书、知乎</td></tr>
+    <tr><td>营销关键词</td><td>扫振一体、巴氏刷牙法、技术平权、国货之光</td></tr>
+    <tr><td>营销费用占比</td><td><strong>42%</strong>（2023，研发仅 3.5%）</td></tr>
+  </table>
+
+  <h4>营销 vs 研发投入对比</h4>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+xychart-beta
+    title "徕芬投入占比（2023年）"
+    x-axis ["营销费用", "研发投入", "其他"]
+    y-axis "%" 0 --> 50
+    bar [42, 3.5, 54.5]
+    </div>
+  </div>
+  <p style="font-size:13px;color:#c62828;">营销投入是研发的 <strong>12 倍</strong>。</p>
+
+  <h4>品牌信任危机时间线</h4>
+  <div class="timeline">
+    <div class="tl-item red">
+      <div class="tl-time">2024 年</div>
+      <div class="tl-text">创始人直播承诺一代用户"送新机" — 至今未兑现</div>
+    </div>
+    <div class="tl-item red">
+      <div class="tl-time">2024.12</div>
+      <div class="tl-text">虚假宣传被罚款 <strong>9.5 万元</strong></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">2025 上半年</div>
+      <div class="tl-text">承诺未兑现，用户维权升温，负面占 21%</div>
+    </div>
+    <div class="tl-item red">
+      <div class="tl-time">2025.12</div>
+      <div class="tl-text">i2 发布 + 老用户 7 折换新被指"比直接买还贵"</div>
+    </div>
+    <div class="tl-item red">
+      <div class="tl-time">2026 年初</div>
+      <div class="tl-text">研发负责人刘璇离职，品牌面临信任破产</div>
+    </div>
+  </div>
+</div>
+
+<!-- 七、用户口碑 -->
+<div class="card" id="reputation">
+  <h2>七、用户口碑分析</h2>
+
+  <h4>口碑情感分析（2025 年）</h4>
+  <div class="mermaid-wrap" style="max-width:500px;margin:16px auto;">
+    <div class="mermaid">
+xychart-beta
+    title "徕芬 2025 年网络口碑情感分析"
+    x-axis ["正面", "中性", "负面"]
+    y-axis "%" 0 --> 80
+    bar [1.63, 77.09, 21.28]
+    </div>
+  </div>
+
+  <div class="swot-grid">
+    <div class="swot-card swot-s">
+      <h4>好评点</h4>
+      <ul>
+        <li>清洁力强 — 牙菌斑清除率明显提升</li>
+        <li>颜值天花板 — 苹果系设计</li>
+        <li>护龈体验好 — 奶嘴级软胶 + 过压提醒</li>
+        <li>充电底座加分 — Qi 无线充救急</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-w">
+      <h4>差评 / 投诉点</h4>
+      <ul>
+        <li>产品质量不稳定 — 充电故障频发</li>
+        <li>刷毛偏硬 / 震感过强</li>
+        <li>换新活动名不副实</li>
+        <li>创始人承诺不兑现</li>
+        <li>刷头涨价 100%</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>平台</th><th>倾向</th><th>情况</th></tr>
+    <tr><td>京东自营</td><td>好评为主，差评集中在质量故障</td><td>多个投诉帖</td></tr>
+    <tr><td>黑猫投诉</td><td><span class="tag tag-red">大量质量投诉</span></td><td>截至 2025 年底超 <strong>1400 条</strong></td></tr>
+    <tr><td>小红书 / B 站</td><td><span class="tag tag-red">负面舆情爆发</span></td><td>换新活动争议</td></tr>
+  </table>
+</div>
+
+<!-- 八、成本与供应链 -->
+<div class="card" id="supply">
+  <h2>八、成本与供应链分析</h2>
+
+  <div class="mermaid-wrap" style="max-width:500px;margin:16px auto;">
+    <div class="mermaid">
+pie title 徕芬 i2 成本结构估算
+    "BOM 物料（80-120元）" : 25
+    "制造成本摊销" : 15
+    "渠道费用（15-20%）" : 18
+    "营销费用（约42%）" : 30
+    "研发/管理/其他" : 7
+    "净利润/亏损" : 5
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card warning"><div class="num">< 40%</div><div class="label">毛利率（行业 ~70%）</div></div>
+    <div class="stat-card negative"><div class="num">-8000万</div><div class="label">2024 牙刷线净亏损</div></div>
+    <div class="stat-card negative"><div class="num">>1亿</div><div class="label">剃须刀研发投入</div></div>
+  </div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TB
+    subgraph 自研自产["徕芬自研自产"]
+        M["自研 6W 伺服电机<br/>核心壁垒"]
+        F["超级工厂 20万㎡<br/>自有产能 >80%"]
+        Q["可靠性实验室<br/>5000万投入"]
+    end
+    subgraph 国产芯片["国产芯片供应商"]
+        C1["凌鸥创芯 - MCU"]
+        C2["昂瑞微 - 蓝牙"]
+        C3["易冲半导体 - 无线充电"]
+        C4["芯海科技 - 压感"]
+    end
+    subgraph 组装["整机组装"]
+        A["深圳术叶创新科技"]
+    end
+    国产芯片 --> A
+    自研自产 --> A
+    </div>
+  </div>
+</div>
+
+<!-- 九、公司经营 -->
+<div class="card" id="company">
+  <h2>九、公司经营与财务状况</h2>
+
+  <div class="stats">
+    <div class="stat-card"><div class="num">~41亿</div><div class="label">2024 年营收</div></div>
+    <div class="stat-card warning"><div class="num">-40%</div><div class="label">2025 年 618 同比</div></div>
+    <div class="stat-card"><div class="num">408项</div><div class="label">专利总数</div></div>
+    <div class="stat-card negative"><div class="num">2.94%</div><div class="label">发明专利占比</div></div>
+  </div>
+
+  <h4>高管流失时间线</h4>
+  <div class="timeline">
+    <div class="tl-item red"><div class="tl-time">2025</div><div class="tl-text">研发总监 <strong>江军</strong> 离职</div></div>
+    <div class="tl-item red"><div class="tl-time">2025</div><div class="tl-text">海外市场负责人 <strong>邵诗立</strong> 离职</div></div>
+    <div class="tl-item red"><div class="tl-time">2025</div><div class="tl-text">销售负责人 <strong>邱颖</strong> 离职</div></div>
+    <div class="tl-item red"><div class="tl-time">2026 初</div><div class="tl-text">研发负责人 <strong>刘璇</strong>（前苹果核心研发）离职</div></div>
+  </div>
+
+  <div class="mermaid-wrap" style="max-width:500px;margin:16px auto;">
+    <div class="mermaid">
+pie title 徕芬专利结构（408项）
+    "实用新型" : 55
+    "外观设计" : 42
+    "发明授权（仅12项）" : 3
+    </div>
+  </div>
+</div>
+
+<!-- 十、SWOT -->
+<div class="card" id="swot">
+  <h2>十、SWOT 分析</h2>
+
+  <div class="swot-grid">
+    <div class="swot-card swot-s">
+      <h4>优势 Strengths</h4>
+      <ul>
+        <li>扫振式技术路线差异化明显，开创品类</li>
+        <li>自建超级工厂，核心部件 80%+ 自产</li>
+        <li>苹果风格设计，用户自发传播</li>
+        <li>市场份额 16%，第一梯队</li>
+        <li>两年只换不修售后</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-w">
+      <h4>劣势 Weaknesses</h4>
+      <ul>
+        <li>产品质量不稳定，充电故障频发</li>
+        <li>品牌口碑恶化，负面占 21.28%</li>
+        <li>刷头涨价 + 换新活动引发信任危机</li>
+        <li>牙刷年亏 8000 万</li>
+        <li>研发投入仅 3.5%（营销 42%）</li>
+        <li>高管集体流失</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-o">
+      <h4>机会 Opportunities</h4>
+      <ul>
+        <li>渗透率 25%，仍有翻倍空间</li>
+        <li>亚太 CAGR 7.9%，全球最快</li>
+        <li>线下 300 家门店扩张</li>
+        <li>"3+N" 战略拓展品类</li>
+        <li>高端化趋势</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-t">
+      <h4>威胁 Threats</h4>
+      <ul>
+        <li>小米/追觅价格战</li>
+        <li>与戴森专利纠纷，海外受阻</li>
+        <li>负面口碑传导</li>
+        <li>技术路线可能被复制</li>
+        <li>增长放缓，618 同比 -40%</li>
+        <li>重资产扩张 + 亏损 = 资金链风险</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+quadrantChart
+    title SWOT 分析矩阵
+    x-axis 负面因素 --> 正面因素
+    y-axis 内部因素 --> 外部因素
+    quadrant-1 优势 Strengths
+    quadrant-2 劣势 Weaknesses
+    quadrant-3 威胁 Threats
+    quadrant-4 机会 Opportunities
+    "扫振式技术": [0.75, 0.20]
+    "自建工厂": [0.70, 0.25]
+    "苹果设计": [0.65, 0.15]
+    "市占率16%": [0.60, 0.30]
+    "品控不稳定": [0.25, 0.25]
+    "负面21%": [0.20, 0.20]
+    "年亏8000万": [0.30, 0.30]
+    "渗透率翻倍": [0.70, 0.75]
+    "线下300家": [0.65, 0.80]
+    "亚太CAGR7.9%": [0.75, 0.85]
+    "小米价格战": [0.25, 0.75]
+    "戴森专利纠纷": [0.15, 0.80]
+    "资金链风险": [0.10, 0.75]
+    </div>
+  </div>
+</div>
+
+<!-- 十一、总结 -->
+<div class="card" id="summary">
+  <h2>十一、总结与建议</h2>
+
+  <div class="swot-grid">
+    <div class="swot-card swot-s">
+      <h4>核心竞争力</h4>
+      <ul>
+        <li>扫振式技术开创者</li>
+        <li>自研伺服电机 + 自建工厂</li>
+        <li>苹果系设计语言</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-w">
+      <h4>核心风险</h4>
+      <ul>
+        <li>品控不稳定</li>
+        <li>营销过度 / 研发不足</li>
+        <li>高管流失 / 亏损扩大</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TB
+    subgraph 优势["核心竞争力"]
+        A1["扫振式技术开创者"]
+        A2["自研伺服电机+自建工厂"]
+        A3["苹果系设计语言"]
+    end
+    subgraph 隐患["核心风险"]
+        B1["品控不稳定"]
+        B2["营销过度/研发不足"]
+        B3["高管流失/亏损扩大"]
+    end
+    subgraph 当前["当前状态"]
+        C1["份额16%但增长放缓"]
+        C2["负面占21%"]
+        C3["从国货之光到信任危机"]
+    end
+    优势 --> 当前
+    隐患 --> 当前
+    </div>
+  </div>
+
+  <h3>核心结论</h3>
+  <blockquote>徕芬 i2 技术创新领先、设计出色，但品控和用户运营存在明显短板。公司层面面临增长放缓（618 GMV -40%）、核心品类亏损（牙刷年亏 8000 万）、高管集体流失、品牌信任透支的多重压力。</blockquote>
+
+  <h3>可借鉴点</h3>
+  <ol>
+    <li><strong>技术+设计的差异化突围：</strong> 在红海品类中找到"扫振式"技术空白，配合苹果系设计语言</li>
+    <li><strong>垂直整合降本：</strong> 自建超级工厂，核心部件自产，长期成本可控</li>
+    <li><strong>充电底座一物多用：</strong> 通用 Qi 无线充，解决痛点</li>
+    <li><strong>无感交互：</strong> 抬起唤醒 + 入口启动 + 倒置自清洁</li>
+  </ol>
+
+  <h3>行动建议</h3>
+  <table>
+    <tr><th style="width:80px">周期</th><th>建议</th></tr>
+    <tr><td><span class="tag tag-red">短期</span></td><td>解决充电故障等品控问题；学习小米/华为售后响应机制</td></tr>
+    <tr><td><span class="tag tag-orange">中期</span></td><td>重新设计换新机制，避免"优惠陷阱"；加大研发投入（目前 3.5% 过低）</td></tr>
+    <tr><td><span class="tag tag-blue">长期</span></td><td>从"营销驱动"转向"产品驱动"；控制线下扩张节奏；先解决戴森专利纠纷再出海</td></tr>
+  </table>
+</div>
+
+<!-- 参考资料 -->
+<div class="card" id="ref">
+  <h2>十二、参考资料</h2>
+
+  <table>
+    <tr><th style="width:60%">来源</th><th>链接</th></tr>
+    <tr><td>IT之家 i2 发布报道</td><td>ithome.com/html/905191.htm</td></tr>
+    <tr><td>充电头网 i2 拆解</td><td>chongdiantou.com/archives/1766539335003.html</td></tr>
+    <tr><td>充电头网 开箱图</td><td>chongdiantou.com/archives/1766132598248.html</td></tr>
+    <tr><td>ChargerLab 拆解（英文）</td><td>chargerlab.com/teardown-of-laifen-i2</td></tr>
+    <tr><td>少数派 上手体验</td><td>go-post.sspai.com/post/104794</td></tr>
+    <tr><td>36氪 公司深度分析</td><td>36kr.com/p/3707035151233160</td></tr>
+    <tr><td>雷锋网 徕芬沉浮录</td><td>leiphone.com/category/weiwu/eCC5WkTA5Rsvm5UY.html</td></tr>
+    <tr><td>亿邦动力 双11 报道</td><td>ebrun.com/624222.html</td></tr>
+    <tr><td>亿邦动力 研发负责人离职</td><td>ebrun.com/644855.html</td></tr>
+    <tr><td>同花顺 去平替化困局</td><td>10jqka.com.cn/20260311/c675229371.shtml</td></tr>
+    <tr><td>华信人咨询 线上数据</td><td>hxrcon.com/industry-news/16298.html</td></tr>
+    <tr><td>头豹研究院 市场格局</td><td>gii.tw（电动牙刷市场报告）</td></tr>
+    <tr><td>徕芬官方产品页</td><td>ww.laifen.net/electric-toothbrush/i2</td></tr>
+  </table>
+</div>
+
+</div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'neutral',
+  securityLevel: 'loose',
+  fontFamily: '-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif',
+  themeVariables: {
+    primaryColor: '#0f3460',
+    primaryTextColor: '#1a1a2e',
+    primaryBorderColor: '#4fc3f7',
+    lineColor: '#4fc3f7',
+    secondaryColor: '#e8f5e9',
+    tertiaryColor: '#f0f8ff',
+    pie1: '#0f3460',
+    pie2: '#4fc3f7',
+    pie3: '#f5a623',
+    pie4: '#e65100',
+    pie5: '#2e7d32',
+    pie6: '#6a1b9a',
+    pie7: '#c62828',
+    pie8: '#8899aa'
+  }
+});
+</script>
+</body>
+</html>

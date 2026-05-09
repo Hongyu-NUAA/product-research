@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品调研报告 — 作品集</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: #f5f6f8; color: #1a1a2e; line-height: 1.6; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
+  color: #fff; padding: 80px 20px 60px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; right: -200px; top: -200px; width: 500px; height: 500px;
+  border-radius: 50%; background: radial-gradient(circle, rgba(79,195,247,0.06) 0%, transparent 70%); }
+.hero h1 { font-size: 40px; font-weight: 800; letter-spacing: 3px; margin-bottom: 10px; }
+.hero h1 span { color: #4fc3f7; }
+.hero .subtitle { font-size: 16px; color: #8899aa; margin-bottom: 12px; letter-spacing: 1px; }
+.hero .bio { font-size: 14px; color: #6a7a8a; max-width: 480px; margin: 0 auto 28px; line-height: 1.8; }
+
+.stats { display: flex; justify-content: center; gap: 50px; }
+.stat-item { text-align: center; }
+.stat-num { font-size: 32px; font-weight: 700; color: #4fc3f7; line-height: 1; }
+.stat-label { font-size: 12px; color: #6a7a8a; margin-top: 4px; }
+
+.section-title { max-width: 960px; margin: 0 auto; padding: 50px 20px 10px; font-size: 14px;
+  color: #8899aa; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+
+/* Report Grid */
+.report-grid { max-width: 960px; margin: 0 auto; padding: 16px 20px 60px; display: grid; gap: 20px; }
+
+.report-card { display: flex; background: #fff; border-radius: 14px; overflow: hidden;
+  text-decoration: none; color: inherit; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border: 1px solid #e8ecf0; transition: all 0.3s; position: relative; }
+.report-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+.report-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: linear-gradient(180deg, #4fc3f7, #0f3460); }
+
+.thumb { width: 200px; min-height: 180px; flex-shrink: 0; display: flex;
+  align-items: center; justify-content: center; font-size: 56px;
+  background: linear-gradient(135deg, #e8f0fe, #e8f5e9); position: relative; overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
+
+.card-body { padding: 22px 28px; flex: 1; }
+.card-body h3 { font-size: 18px; margin-bottom: 8px; color: #1a1a2e; }
+.report-card:hover .card-body h3 { color: #0f3460; }
+.card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.card-date { font-size: 12px; color: #8899aa; }
+.card-body p { font-size: 14px; color: #666; line-height: 1.7; }
+
+.tag { display: inline-block; padding: 2px 9px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+.tag-blue { background: #e3f2fd; color: #1565c0; }
+.tag-green { background: #e8f5e9; color: #2e7d32; }
+.tag-purple { background: #f3e5f5; color: #6a1b9a; }
+
+/* Empty state */
+.empty-state { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; text-align: center; }
+.empty-state-box { border: 2px dashed #d0d8e0; border-radius: 14px; padding: 40px; background: #fafbfc; }
+.empty-state-box h3 { font-size: 16px; color: #444; margin-bottom: 8px; }
+.empty-state-box p { font-size: 13px; color: #8899aa; }
+.add-icon { font-size: 36px; margin-bottom: 12px; }
+
+.footer { text-align: center; padding: 40px 20px 50px; }
+.footer p { font-size: 13px; color: #8899aa; }
+
+@media (max-width: 700px) {
+  .hero { padding: 50px 20px 40px; }
+  .hero h1 { font-size: 28px; }
+  .stats { gap: 30px; flex-wrap: wrap; }
+  .report-card { flex-direction: column; }
+  .thumb { width: 100%; min-height: 140px; font-size: 40px; }
+  .card-body { padding: 16px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📊 产品<span>调研</span>报告</h1>
+  <div class="subtitle">Product Research Portfolio</div>
+  <div class="bio">
+    独立产品调研 · 聚焦消费电子与智能硬件<br>
+    从技术规格、市场竞争到供应链分析，输出结构化深度报告
+  </div>
+  <div class="stats">
+    <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">调研报告</div></div>
+    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">覆盖品类</div></div>
+    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">分析维度</div></div>
+  </div>
+</div>
+
+<div class="section-title">最新报告</div>
+
+<div class="report-grid">
+
+  <a href="reports/laifen-i2.html" class="report-card">
+    <div class="thumb">
+      <img src="images/i2_transparent_01.jpg" alt="徕芬 i2" onerror="this.style.display='none'">
+      <span style="opacity:0.3;">🪥</span>
+    </div>
+    <div class="card-body">
+      <h3>徕芬扫振式电动牙刷 i2 产品调研报告</h3>
+      <div class="card-meta">
+        <span class="card-date">📅 2026-05-09</span>
+        <span class="tag tag-blue">电动牙刷</span>
+        <span class="tag tag-green">消费电子</span>
+        <span class="tag tag-purple">扫振式</span>
+      </div>
+      <p>对徕芬第二代扫振式电动牙刷 i2 的系统化产品调研。覆盖技术规格（自研伺服电机、60° 扫振）、全球与中国市场竞争格局、品牌份额（徕芬 16% 跻身第一梯队）、用户口碑（正面仅 1.63% vs 负面 21%）、BOM 拆解芯片方案、供应链分析、公司财务状况等 12 个维度，含 14 张数据可视化图表与产品实拍。</p>
+    </div>
+  </a>
+
+  <!-- 新报告在这里追加 -->
+
+</div>
+
+<div class="empty-state">
+  <div class="empty-state-box">
+    <div class="add-icon">📝</div>
+    <h3>更多报告持续更新中</h3>
+    <p>聚焦消费电子、智能硬件、个护电器等品类，输出有价值的产品洞察</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 · 产品调研报告作品集</p>
+</div>
+
+</body>
+</html>
