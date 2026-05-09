@@ -1225,12 +1225,30 @@ var mermaidSources = [];
   });
 })();
 
-mermaid.initialize({
-  startOnLoad: true,
-  theme: 'neutral',
-  securityLevel: 'loose',
-  fontFamily: '-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif',
-  themeVariables: {
+function getMermaidTheme(isDark) {
+  if (isDark) {
+    return {
+      primaryColor: '#1c2333',
+      primaryTextColor: '#e6edf3',
+      primaryBorderColor: '#58a6ff',
+      lineColor: '#58a6ff',
+      secondaryColor: '#1c2333',
+      tertiaryColor: '#0d1117',
+      pie1: '#58a6ff',
+      pie2: '#f0883e',
+      pie3: '#56d364',
+      pie4: '#f85149',
+      pie5: '#bc8cff',
+      pie6: '#e8b830',
+      pie7: '#3fb950',
+      pie8: '#6a7a8a',
+      pieStrokeColor: '#30363d',
+      pieTitleTextColor: '#e6edf3',
+      pieSectionTextColor: '#e6edf3',
+      pieLegendTextColor: '#c0c8d4'
+    };
+  }
+  return {
     primaryColor: '#0f3460',
     primaryTextColor: '#1a1a2e',
     primaryBorderColor: '#4fc3f7',
@@ -1245,7 +1263,15 @@ mermaid.initialize({
     pie6: '#6a1b9a',
     pie7: '#c62828',
     pie8: '#8899aa'
-  }
+  };
+}
+
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'neutral',
+  securityLevel: 'loose',
+  fontFamily: '-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif',
+  themeVariables: getMermaidTheme(document.documentElement.getAttribute('data-theme') === 'dark')
 });
 </script>
 <script>
@@ -1303,6 +1329,13 @@ function toggleTheme() {
     localStorage.setItem('theme', 'dark');
   }
   if (typeof mermaid !== 'undefined') {
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    mermaid.initialize({
+      theme: 'neutral',
+      securityLevel: 'loose',
+      fontFamily: '-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif',
+      themeVariables: getMermaidTheme(isDark)
+    });
     document.querySelectorAll('.mermaid').forEach(function(el, i) {
       el.textContent = mermaidSources[i] || el.textContent;
       el.removeAttribute('data-processed');
