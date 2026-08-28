@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人知识库 · 硬件产品工程师 — Weekly Knowledge Base</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: #f5f6f8; color: #1a1a2e; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root {
+  --primary: #4fc3f7;
+  --primary-dark: #0f3460;
+  --accent: #6c5ce7;
+  --warn: #ff7675;
+  --ok: #00b894;
+  --text: #1a1a2e;
+  --muted: #6a7a8a;
+  --border: #e8ecf0;
+  --bg-card: #ffffff;
+  --bg-code: #1a1a2e;
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
+  color: #fff; padding: 64px 24px 56px; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; right: -200px; top: -200px; width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,195,247,0.08) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; left: -150px; bottom: -150px; width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,92,231,0.06) 0%, transparent 70%);
+}
+.hero .breadcrumb {
+  font-size: 13px; color: #6a7a8a; margin-bottom: 18px; letter-spacing: 1px;
+}
+.hero .breadcrumb a { color: var(--primary); text-decoration: none; }
+.hero .breadcrumb a:hover { color: #fff; }
+.hero h1 {
+  font-size: 38px; font-weight: 800; letter-spacing: 2px;
+  margin-bottom: 12px; position: relative;
+}
+.hero h1 span { color: var(--primary); }
+.hero .subtitle {
+  font-size: 14px; color: #8899aa; margin-bottom: 14px; letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero .desc {
+  font-size: 14px; color: #99aabb; max-width: 640px; margin: 0 auto 28px; line-height: 1.8;
+}
+.hero .badge-row {
+  display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;
+}
+.hero .badge {
+  display: inline-block; padding: 5px 14px; border-radius: 20px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  font-size: 12px; color: #b0c0d0;
+}
+.hero .badge .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  margin-right: 6px; vertical-align: middle; background: var(--ok);
+  box-shadow: 0 0 8px var(--ok);
+}
+
+.stats {
+  display: flex; justify-content: center; gap: 56px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.stat-item { text-align: center; }
+.stat-num { font-size: 32px; font-weight: 700; color: var(--primary); line-height: 1; }
+.stat-num .accent { color: var(--accent); }
+.stat-label { font-size: 12px; color: #8899aa; margin-top: 6px; letter-spacing: 1px; }
+
+/* ===== Layout ===== */
+.layout {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 240px 1fr; gap: 32px;
+  padding: 32px 20px 60px;
+}
+
+aside.toc {
+  position: sticky; top: 24px; align-self: start;
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 22px 20px; max-height: calc(100vh - 48px); overflow-y: auto;
+}
+aside.toc h3 {
+  font-size: 13px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 2px; margin-bottom: 14px;
+}
+aside.toc nav { display: flex; flex-direction: column; gap: 4px; }
+aside.toc nav a {
+  font-size: 14px; color: var(--text); padding: 7px 10px; border-radius: 6px;
+  text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent;
+}
+aside.toc nav a:hover {
+  background: #f0f7ff; color: var(--primary-dark); border-left-color: var(--primary);
+}
+aside.toc nav a .icon { margin-right: 6px; }
+
+main { min-width: 0; }
+
+/* ===== Module ===== */
+.module {
+  background: #fff; border-radius: 14px; border: 1px solid var(--border);
+  padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  scroll-margin-top: 24px;
+}
+.module-header {
+  display: flex; align-items: center; gap: 12px; padding-bottom: 14px;
+  border-bottom: 2px solid var(--border); margin-bottom: 18px;
+}
+.module-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+  background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+}
+.module-title { font-size: 20px; font-weight: 700; color: var(--text); }
+.module-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.module-tag-count {
+  margin-left: auto; padding: 4px 12px; border-radius: 12px;
+  background: #f0f8ff; color: var(--primary-dark); font-size: 12px; font-weight: 500;
+}
+
+/* ===== Week Section ===== */
+.week-block {
+  margin-bottom: 24px; border-radius: 10px;
+  background: linear-gradient(135deg, #fafbfc, #ffffff);
+  border: 1px solid var(--border); padding: 20px 24px;
+  position: relative;
+}
+.week-block::before {
+  content: ''; position: absolute; left: 0; top: 12px; bottom: 12px; width: 4px;
+  border-radius: 0 2px 2px 0; background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+}
+.week-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.week-tag {
+  background: var(--bg-code); color: var(--primary);
+  padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  font-family: 'SF Mono', Consolas, monospace;
+}
+.week-date { font-size: 13px; color: var(--muted); }
+.week-badge-new {
+  margin-left: auto; padding: 3px 10px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--ok), #00cec9);
+  color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 1px;
+}
+
+/* ===== Content Blocks ===== */
+.kb-item {
+  margin-bottom: 14px; padding-left: 18px; position: relative;
+}
+.kb-item::before {
+  content: '▸'; position: absolute; left: 0; top: 0;
+  color: var(--primary); font-weight: bold; font-size: 14px;
+}
+.kb-item h4 {
+  font-size: 15px; font-weight: 600; color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+.kb-item p { font-size: 14px; color: #444; margin-bottom: 6px; }
+.kb-item ul { padding-left: 20px; margin: 6px 0; }
+.kb-item li { font-size: 13px; color: #555; margin-bottom: 3px; }
+
+/* ===== Table ===== */
+.data-table {
+  width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px;
+}
+.data-table th {
+  background: #f0f4f8; color: var(--primary-dark); font-weight: 600;
+  padding: 8px 10px; border: 1px solid var(--border); text-align: left;
+}
+.data-table td {
+  padding: 7px 10px; border: 1px solid var(--border); color: #444;
+}
+.data-table tr:nth-child(even) td { background: #fafbfc; }
+.data-table .hl { background: #fff8e1 !important; color: #e65100; font-weight: 600; }
+
+code, pre {
+  font-family: 'SF Mono', Consolas, 'Courier New', monospace;
+}
+code {
+  background: #f0f2f5; color: var(--primary-dark);
+  padding: 2px 6px; border-radius: 4px; font-size: 12.5px;
+}
+pre {
+  background: var(--bg-code); color: #e0e0e0; padding: 14px 16px;
+  border-radius: 8px; margin: 8px 0; font-size: 12.5px; line-height: 1.6;
+  overflow-x: auto; border-left: 3px solid var(--primary);
+}
+pre .kw { color: #ff79c6; }
+pre .ty { color: #8be9fd; }
+pre .cm { color: #6272a4; font-style: italic; }
+pre .str { color: #f1fa8c; }
+pre .fn { color: #50fa7b; }
+pre .num { color: #bd93f9; }
+
+.callout {
+  margin: 12px 0; padding: 12px 16px; border-radius: 8px;
+  background: #fff8e1; border-left: 4px solid #ffa000; font-size: 13px; color: #5d4037;
+}
+.callout strong { color: #e65100; }
+.callout.tip { background: #e3f2fd; border-color: var(--primary); color: #0d47a1; }
+.callout.tip strong { color: var(--primary-dark); }
+.callout.ok { background: #e8f5e9; border-color: var(--ok); color: #1b5e20; }
+.callout.ok strong { color: #2e7d32; }
+.callout.warn { background: #ffebee; border-color: var(--warn); color: #b71c1c; }
+.callout.warn strong { color: #c62828; }
+
+/* ===== Concept Grid ===== */
+.concept-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px; margin: 12px 0;
+}
+.concept-pill {
+  background: #f8fafc; border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 14px; font-size: 13px; transition: all 0.2s;
+}
+.concept-pill:hover {
+  background: #fff; border-color: var(--primary);
+  transform: translateY(-1px); box-shadow: 0 2px 8px rgba(79,195,247,0.15);
+}
+.concept-pill .label {
+  font-size: 11px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 3px;
+}
+.concept-pill .value { font-weight: 600; color: var(--text); font-size: 14px; }
+.concept-pill .desc { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* ===== Timeline ===== */
+.timeline {
+  margin: 14px 0; padding-left: 18px; position: relative;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px;
+  width: 2px; background: var(--border);
+}
+.timeline-item {
+  position: relative; padding-left: 14px; margin-bottom: 10px;
+  font-size: 13px; color: #444;
+}
+.timeline-item::before {
+  content: ''; position: absolute; left: -16px; top: 7px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--primary); border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--primary);
+}
+.timeline-item .t { color: var(--muted); font-weight: 600; margin-right: 8px; }
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center; padding: 40px 20px;
+  border-top: 1px solid var(--border); margin-top: 40px;
+}
+.footer p { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.footer .auto-tag {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  background: #f0f7ff; color: var(--primary-dark); font-size: 11px;
+}
+
+/* ===== Empty ===== */
+.empty {
+  border: 2px dashed #d0d8e0; border-radius: 12px; padding: 32px 24px;
+  text-align: center; background: #fafbfc; margin-top: 12px;
+}
+.empty .e-icon { font-size: 32px; margin-bottom: 10px; }
+.empty .e-text { font-size: 13px; color: var(--muted); }
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #c0c8d0; border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  aside.toc { position: static; max-height: none; }
+  .hero { padding: 50px 16px 40px; }
+  .hero h1 { font-size: 26px; }
+  .module { padding: 22px 20px; }
+  .stats { gap: 28px; }
+  .data-table { font-size: 12px; }
+  .data-table th, .data-table td { padding: 6px 7px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="../index.html">← 返回产品调研主页</a>
+  </div>
+  <h1>个人<span>知识库</span></h1>
+  <div class="subtitle">Weekly Knowledge Base · 硬件产品工程师</div>
+  <div class="desc">
+    沉淀 Work 工作空间中日常提问与学习的知识<br>
+    每周五自动整理本周新增内容 · 模块化归纳 · 持续积累
+  </div>
+  <div class="badge-row">
+    <span class="badge"><span class="dot"></span>已激活 · 每周五自动更新</span>
+    <span class="badge">📂 来源：WorkBuddy「Work」工作空间</span>
+    <span class="badge">🚀 GitHub 同步托管</span>
+  </div>
+  <div class="stats">
+    <div class="stat-item"><div class="stat-num" id="stat-weeks">1</div><div class="stat-label">累计周次</div></div>
+    <div class="stat-item"><div class="stat-num" id="stat-modules">2</div><div class="stat-label">知识模块</div></div>
+    <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">知识点</div></div>
+    <div class="stat-item"><div class="stat-num"><span class="accent">∞</span></div><div class="stat-label">持续积累中</div></div>
+  </div>
+</div>
+
+<div class="layout">
+
+<aside class="toc">
+  <h3>📚 知识导航</h3>
+  <nav>
+    <a href="#m-rf"><span class="icon">📡</span>射频与链路测试</a>
+    <a href="#m-material"><span class="icon">🔩</span>材料力学与物性</a>
+    <a href="#m-history"><span class="icon">🗂</span>更新历史</a>
+  </nav>
+</aside>
+
+<main>
+
+    <!-- ============== 模块 1：射频与链路测试 ============== -->
+  <section class="module" id="m-rf">
+    <div class="module-header">
+      <div class="module-icon" style="background:linear-gradient(135deg,#b3e5fc,#81d4fa);">📡</div>
+      <div>
+        <div class="module-title">射频与链路测试</div>
+        <div class="module-meta">RF &amp; Link Testing · RSSI / 不圆度 / MCS / dBm / 有源无源</div>
+      </div>
+      <div class="module-tag-count" id="cnt-rf">--</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-head">
+        <span class="week-tag">W32–W34 · 2026</span>
+        <span class="week-date">2026-08-07 ~ 08-10 提问沉淀</span>
+        <span class="week-badge-new">启动期收录</span>
+      </div>
+
+      <div class="kb-item">
+        <h4>RSSI — 接收信号强度指示</h4>
+        <p><strong>RSSI（Received Signal Strength Indicator）</strong> = 接收端"收到的信号有多强"的指示量，单位 <strong>dBm</strong>。无线链路是双向的，因此通常分"飞机端 RSSI / 遥控端 RSSI"分别记录。</p>
+        <ul>
+          <li><strong>数值越大信号越强</strong>：-40dBm 远强于 -80dBm（dBm 是负值，见下方专条）</li>
+          <li><strong>max / min</strong>：被测设备旋转/移动一周内收到的最大与最小信号，反映稳定性</li>
+          <li><strong>量级判断</strong>：-30~-60dBm 属强信号区间；-90~-110dBm 已逼近接收机灵敏度下限</li>
+        </ul>
+        <div class="callout warn">
+          <strong>⚠️ 报告记录的"绝对值陷阱"：</strong>部分测试表把负号省掉、只记绝对值（如 58 代表 -58dBm），此时<strong>数字越小反而信号越强</strong>，阅读前必须先补负号；正式报告建议统一为标准 -dBm 格式，避免误读。
+        </div>
+      </div>
+
+      <div class="kb-item">
+        <h4>不圆度 — 天线的方向均匀性指标</h4>
+        <p><strong>不圆度 = 天线旋转一周内最强信号与最弱信号的差值（max − min，单位 dB）</strong>。天线并非完美球形，向四周接收信号的能力有强有弱。</p>
+        <ul>
+          <li><strong>数值越小越好</strong>：各方向接收均匀，像标准圆；设备转身信号不掉</li>
+          <li><strong>数值大</strong>：存在明显"死角"，设备姿态一变信号就大幅波动</li>
+          <li>典型量级：优质天线不圆度在 2~7dB 以内</li>
+        </ul>
+      </div>
+
+      <div class="kb-item">
+        <h4>MCS 档位 与 链路速率</h4>
+        <p>无人机图传/遥控链路为适应信号好坏，会自动在多个<strong>传输模式（MCS 档位）</strong>间切换：</p>
+        <ul>
+          <li><strong>档位越高</strong> = 每帧携带数据越多（更高阶调制、更高码率），但<strong>要求信号越好</strong>；信号差时自动降档保连接</li>
+          <li><strong>速率（Mbps）</strong> = 链路实际传输速度；<strong>档位决定上限、信号决定实际值</strong></li>
+          <li>"档位高但速率低" = 档位已爬升但吞吐上不去，通常意味着<strong>重传严重</strong>（丢包/干扰/链路质量差）</li>
+        </ul>
+      </div>
+
+      <div class="kb-item">
+        <h4>dBm 与 dB — 为什么接收信号是负值</h4>
+        <p>dBm 的"0"是 <strong>1 毫瓦基准线</strong>：</p>
+        <pre><span class="cm"># dBm 定义：功率相对 1mW 的分贝数</span>
+dBm = <span class="num">10</span> × log10( P / <span class="num">1mW</span> )
+<span class="cm"># P = 1mW  →  0 dBm（基准点）
+# P &gt; 1mW  →  正数（如 +20dBm = 100mW，发射端）
+# P &lt; 1mW  →  负数（接收端，常为 1mW 的百万分之一量级）</span></pre>
+        <p>接收信号功率远小于 1mW，所以 dBm 天然为负。对数刻度两大理由：</p>
+        <ul>
+          <li>① 动态范围横跨 12+ 个数量级，线性刻度画不下</li>
+          <li>② 衰减是乘法（自由空间每远一倍功率 ×1/4），对数变为<strong>每远一倍 −6dB</strong>，链路预算整条是加减法：接收(dBm) = 发射(+20) − 路径损耗(80) = <strong>-60dBm</strong></li>
+        </ul>
+        <table class="data-table">
+          <tr><th>概念</th><th>含义</th><th>典型值</th></tr>
+          <tr><td><strong>dBm</strong></td><td>以 1mW 为基准的功率刻度</td><td>发射 +20 / 接收 -60~-100</td></tr>
+          <tr><td><strong>dB</strong></td><td>两个量的差值（不圆度、衰减）</td><td>3dB=2倍 / 6dB=4倍 / 10dB=10倍</td></tr>
+        </table>
+      </div>
+
+      <div class="kb-item">
+        <h4>接收灵敏度 — 接收机的"听力门槛"</h4>
+        <p><strong>灵敏度</strong> = 接收机还能正确解调出信号的最低电平，是"听不见"的门槛，典型约 <strong>-90 ~ -110 dBm</strong>。</p>
+        <ul>
+          <li><strong>数值越低（越负）越好</strong>：能听到更弱的信号，通信距离更远</li>
+          <li>信号低于灵敏度时，速率骤降、误码/断链风险激增</li>
+        </ul>
+      </div>
+
+      <div class="kb-item">
+        <h4>有源 vs 无源天线/模块</h4>
+        <p><strong>一句话：无源 = 不插电的"传话筒"，只传递不放大；有源 = 插电的"助听器"，内置放大器（LNA）把微弱信号放大后再输出。</strong></p>
+        <table class="data-table">
+          <tr><th>维度</th><th>无源（被动）</th><th>有源（主动）</th></tr>
+          <tr><td>供电</td><td>不需要</td><td>需要（馈线/电源供电）</td></tr>
+          <tr><td>放大能力</td><td>无，信号原样传递</td><td>内置 LNA，可增强信号</td></tr>
+          <tr><td>灵敏度</td><td>受限于接收机本身</td><td>更高，能"听"到更弱信号</td></tr>
+          <tr><td>噪声</td><td>不引入额外噪声</td><td>放大器自身引入噪声（噪声系数 NF）</td></tr>
+          <tr><td>典型应用</td><td>收音机天线、WiFi 贴片天线</td><td>GPS 有源天线、卫星电视锅、射频 hub 模块</td></tr>
+        </table>
+        <div class="callout warn">
+          <strong>⚠️ "放大器虚高"原则：</strong>加了 LNA 的有源设备，其 RSSI 读数是<strong>被放大过的值</strong>（同一真实 -80dBm 可能显示 -60dBm）。因此<strong>有源设备的 RSSI 只能看相对趋势，不能与无源设备横向比绝对值</strong>。射频设计铁律："最好的放大器是放在最前面的放大器"——LNA 越靠近天线，系统灵敏度提升越明显。
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============== 模块 2：材料力学与物性 ============== -->
+  <section class="module" id="m-material">
+    <div class="module-header">
+      <div class="module-icon" style="background:linear-gradient(135deg,#ffe0b2,#ffcc80);">🔩</div>
+      <div>
+        <div class="module-title">材料力学与物性</div>
+        <div class="module-meta">Material Mechanics · 屈服/抗拉强度 / 弹性/弯曲模量</div>
+      </div>
+      <div class="module-tag-count" id="cnt-material">--</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-head">
+        <span class="week-tag">W33–W34 · 2026</span>
+        <span class="week-date">2026-08-17 提问沉淀</span>
+        <span class="week-badge-new">启动期收录</span>
+      </div>
+
+      <div class="kb-item">
+        <h4>屈服强度 vs 抗拉强度</h4>
+        <p><strong>屈服强度 σs 是材料"开始不可逆变形"的门槛；抗拉强度 σb 是材料"被拉断前能承受的最大应力"。</strong>正常材料必有 σs &lt; σb。</p>
+        <pre><span class="cm"># 应力-应变曲线四阶段</span>
+应力
+ ↑        抗拉强度 σb (峰值)
+ │          ╱↘
+ │         ╱   ↘ 颈缩 → 断裂
+ │        ╱
+ │───────╱────── 屈服强度 σs (拐点/平台)
+ │      ╱
+ │     ╱  弹性段（卸载可恢复）
+ └────────────────→ 应变</pre>
+        <ul>
+          <li><strong>弹性段</strong>：低于屈服强度，卸载后完全恢复原状</li>
+          <li><strong>屈服点</strong>：进入塑性，变形不可逆（"掰弯松手回不直"）</li>
+          <li><strong>强化段</strong>：加工硬化使材料能承受更大应力，直到抗拉强度峰值</li>
+          <li><strong>颈缩段</strong>：过峰值后局部变细、迅速断裂</li>
+        </ul>
+        <div class="callout tip">
+          <strong>📌 工程要点：</strong>① 结构设计以<strong>屈服强度</strong>为准——超过即永久变形失效；② <strong>屈强比 σs/σb</strong> 越小安全缓冲越大，接近 1 偏脆；③ 铝合金等无明显屈服平台的材料用<strong>条件屈服强度 σ0.2</strong>（产生 0.2% 塑性应变对应的应力）；④ 纤维增强塑料（PA+GF / PA+CF）通常<strong>没有明显屈服平台</strong>，物性表给出的多为抗拉（断裂）强度，表述时注意区分。
+        </div>
+      </div>
+
+      <div class="kb-item">
+        <h4>弹性模量 vs 弯曲模量</h4>
+        <table class="data-table">
+          <tr><th>项目</th><th>含义</th><th>测试标准</th></tr>
+          <tr><td><strong>弹性（拉伸）模量</strong></td><td>材料拉伸时的刚度（应力/应变）</td><td>ISO 527-2</td></tr>
+          <tr><td><strong>弯曲模量</strong></td><td>材料弯曲时的刚度</td><td>ISO 178</td></tr>
+        </table>
+        <ul>
+          <li><strong>金属</strong>：两者数值接近，可近似互换</li>
+          <li><strong>玻纤/碳纤增强塑料</strong>：弯曲模量往往<strong>明显高于拉伸模量</strong>（弯曲时存在应力梯度、受压侧与纤维取向影响），严格不能直接替代</li>
+          <li>物性表只提供弯曲模量时，按拉伸模量使用需注明"由弯曲模量估算"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<!-- ============== 更新历史 ============== -->
+  <section class="module" id="m-history">
+    <div class="module-header">
+      <div class="module-icon" style="background:linear-gradient(135deg,#cfd8dc,#90a4ae);">🗂</div>
+      <div>
+        <div class="module-title">更新历史</div>
+        <div class="module-meta">Changelog · 每周五 17:30 自动追加</div>
+      </div>
+      <div class="module-tag-count">v0.3</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="t">2026-08-28 (W34)</span>
+        <strong>v0.4 · 转为通用概念词典</strong> — 按用户要求移除文档/测试<strong>具体内容</strong>（拉距测试场景与对比结论、物性表核对明细），只保留<strong>通用核心概念</strong>：射频——RSSI / 不圆度 / MCS 档位 / dBm 与 dB / 灵敏度 / 有源 vs 无源；材料——屈服强度 vs 抗拉强度 / 弹性模量 vs 弯曲模量。
+      </div>
+      <div class="timeline-item">
+        <span class="t">2026-08-28 (W34)</span>
+        <strong>v0.3 · 精简收录范围</strong> — 按用户要求<strong>移除"办公技能与术语"模块</strong>（通视条件、Word 表格跨页），保留更聚焦的硬件/材料/射频三大核心方向。现为 <strong>2 大模块 / 8 知识点</strong>，全部来自 Work 空间 4 个真实会话（08-07 拉距测试分析、08-10 有源无源、08-17 材料核对、08-19 Word 排版 仅作排除说明，实际未保留）。
+      </div>
+      <div class="timeline-item">
+        <span class="t">2026-08-28 (W34)</span>
+        <strong>v0.2 · 修正收录范围</strong> — 按用户要求改为<strong>仅收录 Work 工作空间</strong>的提问内容。重建为 3 大模块：射频与链路测试（6 项）/ 材料力学与物性（3 项）/ 办公技能与术语（2 项），全部来自 Work 空间 4 个真实会话。
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <strong>🔄 自动机制说明：</strong>每周五 17:30 由 WorkBuddy 自动任务触发（"个人知识库构建"），仅汇总 <strong>Work 工作空间</strong>本周对话内容并 append 到对应模块。
+    </div>
+
+    <div class="empty">
+      <div class="e-icon">📝</div>
+      <div class="e-text">
+        下一次更新：<strong>2026-09-04 (W36)</strong> · 将收录 Work 空间下周的新提问<br>
+        新知识点会追加到对应模块；出现新领域时增加新模块
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</div>
+
+<div class="footer">
+  <p>© 2026 · 个人知识库 · 由 WorkBuddy 自动构建</p>
+  <p><span class="auto-tag">Auto-Updated</span> · 托管于 GitHub: <a href="https://github.com/Hongyu-NUAA/product-research/tree/master/knowledge-base" style="color:var(--primary);text-decoration:none;">Hongyu-NUAA/product-research</a></p>
+</div>
+
+<script>
+// 自动统计模块数 + 周次
+(function() {
+  const modules = document.querySelectorAll('section.module').length - 1; // 减去 history 模块
+  const moduleCount = document.getElementById('stat-modules');
+  if (moduleCount) moduleCount.textContent = modules;
+  const weekCount = document.getElementById('stat-weeks');
+  if (weekCount) weekCount.textContent = '1'; // 启动期 = 第 1 周
+
+  // 各模块卡片右下角显示项数
+  document.querySelectorAll('.module').forEach(function(m) {
+    if (m.id === 'm-history') return;
+    const items = m.querySelectorAll('.kb-item').length;
+    const tagEl = m.querySelector('.module-tag-count');
+    if (tagEl) tagEl.textContent = items + ' 项';
+  });
+})();
+</script>
+
+</body>
+</html>
